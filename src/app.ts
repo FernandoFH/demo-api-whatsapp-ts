@@ -1,7 +1,7 @@
 import { addKeyword, createBot, createFlow, createProvider, MemoryDB } from "@bot-whatsapp/bot";
 import { BaileysProvider, handleCtx } from "@bot-whatsapp/provider-baileys"
 
-const flowBienvenida = addKeyword('hola').addAnswer('2Pacß!!')
+const flowBienvenida = addKeyword('hola').addAnswer('Bienvenido!!')
 
 const main = async () => {
 
@@ -13,15 +13,15 @@ const main = async () => {
         const body = req.body
  
         const phone = body.phone
-        const message = body.message
-        const mediaUrl = body.mediaUrl
-        console.log(body)
+        const incidenceID = body.incidenceID
+        const techName = body.techName
 
-        // 5218110609863
+        const message = "Se creó la incidencia "+ incidenceID +" la cual fue asignada al técnico "+ techName;
 
-        await bot.sendMessage(phone, message, {
-            media:mediaUrl
-        })
+       // const mediaUrl = body.mediaUrl
+       // console.log(body)
+        
+        await bot.sendMessage(phone, message, {})
         res.end('Mensaje Enviado!')
     }))
 
